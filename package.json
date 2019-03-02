@@ -8,7 +8,11 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --write '*.js'",
-    "format-code": "yarn run prettier && yarn run lint:fix"
+    "format-code": "yarn run prettier && yarn run lint:fix",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": ["yarn run format-code", "git add"]
   },
   "dependencies": {
     "expo": "^32.0.0",
