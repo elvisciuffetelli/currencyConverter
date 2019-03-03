@@ -12,12 +12,19 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["yarn run format-code", "git add"]
+    "*.js": [
+      "yarn run format-code",
+      "git add"
+    ]
   },
   "dependencies": {
+    "color": "^3.1.0",
     "expo": "^32.0.0",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-extended-stylesheet": "^0.11.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
