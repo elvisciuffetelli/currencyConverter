@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { StatusBar, KeyboardAvoidingView } from 'react-native';
 import { Container } from '../components/Container';
 import { Logo } from '../components/Logo';
@@ -26,11 +27,13 @@ class Home extends Component {
   }
 
   handlePressBaseCurrency() {
-    console.log(this, 'press base');
+    const { navigation } = this.props;
+    navigation.navigate('CurrencyList', { title: 'Base Currency' });
   }
 
   handlePressQuoteCurrency() {
-    console.log(this, 'press quote');
+    const { navigation } = this.props;
+    navigation.navigate('CurrencyList', { title: 'Quote Currency' });
   }
 
   handleTextChange(text) {
@@ -77,5 +80,9 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  navigation: PropTypes.object,
+};
 
 export default Home;
