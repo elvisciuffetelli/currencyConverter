@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { ScrollView, StatusBar, Platform } from 'react-native';
+import PropTypes from 'prop-types';
+import {
+  ScrollView, StatusBar, Platform, Linking,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { ListItem, Separator } from '../components/List';
+import { connectAlert } from '../components/Alert';
 
 const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
 const ICON_COLOR = '#868686';
@@ -17,11 +21,14 @@ class Options extends Component {
   }
 
   handleThemesPress() {
-    console.log(this, 'press themes');
+    const { navigation } = this.props;
+    navigation.navigate('Themes');
   }
 
   handleSitePress() {
-    console.log(this, 'press site');
+    const { alertWithType } = this.props;
+    // openURL returns a Promise, so we need a catch for errors
+    Linking.openURL('https://fixer.io/').catch(() => alertWithType('error', 'Sorry!', "Fixer.io can't be reached right now"));
   }
 
   render() {
@@ -48,4 +55,9 @@ class Options extends Component {
   }
 }
 
-export default Options;
+Options.propTypes = {
+  navigation: PropTypes.object,
+  alertWithType: PropTypes.func,
+};
+
+export default connectAlert(Options);

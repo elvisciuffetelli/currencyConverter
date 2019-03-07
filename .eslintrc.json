@@ -26,6 +26,8 @@
       }
     ],
     "arrow-body-style": "off",
+    "class-methods-use-this": "off",
+    "no-alert": "off",
     "react/forbid-prop-types": [0],
     "react/require-default-props": [0],
     "global-require": [0]
