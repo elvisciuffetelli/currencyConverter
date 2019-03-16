@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View, ImageBackground, Text, Keyboard, Animated, Platform,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './styles';
 
 const ANIMATION_DURATION = 250;
@@ -62,12 +63,14 @@ class Logo extends Component {
   }
 
   render() {
+    const { tintColor } = this.props;
+
     const containerImageStyle = [
       styles.containerImage,
       { width: this.containerImageWidth, height: this.containerImageWidth },
     ];
 
-    const imageStyle = [styles.logo, { width: this.imageWidth }];
+    const imageStyle = [styles.logo, { width: this.imageWidth }, tintColor ? { tintColor } : null];
 
     return (
       <View style={styles.container}>
@@ -88,5 +91,9 @@ class Logo extends Component {
     );
   }
 }
+
+Logo.propTypes = {
+  tintColor: PropTypes.string,
+};
 
 export default Logo;

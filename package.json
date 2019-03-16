@@ -5,8 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint app/",
+    "lint:fix": "eslint app/ --fix",
     "prettier": "prettier --write '*.js'",
     "format-code": "yarn run prettier && yarn run lint:fix",
     "precommit": "lint-staged"
@@ -31,7 +31,8 @@
     "react-navigation": "2.5.5",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-saga": "0.16.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",

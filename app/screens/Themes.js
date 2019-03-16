@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { ScrollView, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import { ListItem, Separator } from '../components/List';
+import { changePrimaryColor } from '../actions/theme';
 
 const styles = EStyleSheet.create({
   $violet: '$primaryViolet',
@@ -21,8 +23,9 @@ class Themes extends Component {
     this.handleThemePress = this.handleThemePress.bind(this);
   }
 
-  handleThemePress() {
-    const { navigation } = this.props;
+  handleThemePress(color) {
+    const { navigation, dispatch } = this.props;
+    dispatch(changePrimaryColor(color));
     navigation.goBack();
   }
 
@@ -49,7 +52,7 @@ class Themes extends Component {
         <Separator />
 
         <ListItem
-          text="Orange"
+          text="Green"
           onPress={() => this.handleThemePress(styles.$green)}
           selected
           checkmark={false}
@@ -58,7 +61,7 @@ class Themes extends Component {
         <Separator />
 
         <ListItem
-          text="Green"
+          text="Orange"
           onPress={() => this.handleThemePress(styles.$orange)}
           selected
           checkmark={false}
@@ -81,6 +84,7 @@ class Themes extends Component {
 
 Themes.propTypes = {
   navigation: PropTypes.object,
+  dispatch: PropTypes.func,
 };
 
-export default Themes;
+export default connect()(Themes);
